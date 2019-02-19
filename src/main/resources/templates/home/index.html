@@ -5,10 +5,15 @@
     <title>EasyUI Demo</title>
     <link rel="stylesheet" type="text/css" href="/static/easyui/themes/default/easyui.css"/>
     <link rel="stylesheet" type="text/css" href="/static/easyui/themes/icon.css"/>
-    <script type="text/javascript" src="/static/jQuery/jquery.js"></script>
-    <script type="text/javascript" src="/static/easyui/jquery.easyui.min.js"></script>
+    <script src="/static/jQuery/jquery.js"></script>
+    <script src="/static/easyui/jquery.easyui.min.js"></script>
+    <script src="/static/vue/vue.js"></script>
 </head>
-
+<style type="text/css">
+    [v-cloak] {
+        display: none
+    }
+</style>
 <body class="easyui-layout">
 <div region="north" style="height:80px;">
     <!-- 页面头部 -->
@@ -16,23 +21,26 @@
 </div>
 
 <div region="west" split="true" style="width:220px" title="导航菜单">
-    <ul id="tt" class="easyui-tree">
-        <li>
-            <span>Folder</span>
-            <ul>
-                <li>
-                    <span>Sub Folder 1</span>
-                    <ul>
-                        <li><span><a href="#">File 11</a></span></li>
-                        <li><span>File 12</span></li>
-                        <li><span>File 13</span></li>
-                    </ul>
-                </li>
-                <li><span>File 2</span></li>
-                <li><span>File 3</span></li>
-            </ul>
-        </li>
-        <li><span>File21</span></li>
+    <input type="text" id="menuName">
+    <button onclick="addMenu()">添加菜单</button>
+
+    <ul id="tt" class="easyui-tree" data-options="animate:true">
+        <!--<li>-->
+            <!--<span>Folder</span>-->
+            <!--<ul>-->
+                <!--<li>-->
+                    <!--<span>Sub Folder 1</span>-->
+                    <!--<ul>-->
+                        <!--<li><span><a href="#">File 11</a></span></li>-->
+                        <!--<li><span>File 12</span></li>-->
+                        <!--<li><span>File 13</span></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+                <!--<li><span>File 2</span></li>-->
+                <!--<li><span>File 3</span></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li><span>File21</span></li>-->
     </ul>
 </div>
 
@@ -49,10 +57,29 @@
 </div>
 </body>
 <script type="text/javascript">
-    $('#tt').tree({
-        onClick: function(node){
-            alert(node.text);
-        }
-    });
+
+    $(function () {
+        $('#tt').tree({
+            url:'loadMenu'
+        });
+    })
+
+
+    function addMenu() {
+        $.ajax({
+            url:"addMenu",
+            dataType:"json",
+            type:"post",
+            data:{
+                menuNmae : $("#menuName").val()
+            },
+            success:function (resule) {
+                console.log(resule)
+            },
+            error:function (re) {
+                console.log(re)
+            }
+        })
+    }
 </script>
 </html>

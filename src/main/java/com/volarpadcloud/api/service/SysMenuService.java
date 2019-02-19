@@ -1,7 +1,6 @@
 package com.volarpadcloud.api.service;
 
 import com.volarpadcloud.api.entity.SysMenu;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,4 +11,6 @@ import java.util.List;
  */
 public interface SysMenuService {
     List<SysMenu> selectAll();
+
+    void addMenu(SysMenu sysMenu);
 }

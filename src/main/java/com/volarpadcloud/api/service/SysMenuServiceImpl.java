@@ -2,7 +2,6 @@ package com.volarpadcloud.api.service;
 
 import com.volarpadcloud.api.entity.SysMenu;
 import com.volarpadcloud.api.mapper.SysMenuMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,5 +21,10 @@ public class SysMenuServiceImpl implements SysMenuService{
     @Override
     public List<SysMenu> selectAll() {
         return sysMenuMapper.selectAll();
+    }
+
+    @Override
+    public void addMenu(SysMenu sysMenu) {
+        sysMenuMapper.insert(sysMenu);
     }
 }

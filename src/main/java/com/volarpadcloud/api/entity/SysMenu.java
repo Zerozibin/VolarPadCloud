@@ -1,15 +1,13 @@
 package com.volarpadcloud.api.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class SysMenu implements Serializable {
-    private static final long serialVersionUID = 4819738254860372748L;
-    private String id;
+public class SysMenu {
+    private Integer id;
 
     private String name;
 
-    private String parentId;
+    private Integer parentId;
 
     private Integer level;
 
@@ -23,12 +21,12 @@ public class SysMenu implements Serializable {
 
     private String remark;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -39,12 +37,12 @@ public class SysMenu implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(String parentId) {
-        this.parentId = parentId == null ? null : parentId.trim();
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public Integer getLevel() {

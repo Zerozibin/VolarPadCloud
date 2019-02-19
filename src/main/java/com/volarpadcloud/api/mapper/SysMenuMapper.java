@@ -7,13 +7,13 @@ import java.util.List;
 
 @Mapper
 public interface SysMenuMapper {
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(SysMenu record);
 
     int insertSelective(SysMenu record);
 
-    SysMenu selectByPrimaryKey(String id);
+    SysMenu selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(SysMenu record);
 
