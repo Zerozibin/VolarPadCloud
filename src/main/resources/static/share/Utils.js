@@ -16,5 +16,10 @@ function introduceHeadAndFoot(head,foot){
         $("#"+foot).load("templates/share/foot.html", function () {//加载完成后设置高亮
         });
 }
+//div加载页面的方法
+function introducePage(id,name){
+    $("#"+id).load("templates/home/center/"+name+".html", function () {//加载完成后设置高亮
+    });
+}
 
 

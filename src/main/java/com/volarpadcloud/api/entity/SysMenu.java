@@ -11,6 +11,8 @@ public class SysMenu {
 
     private Integer level;
 
+    private String flag;
+
     private Integer status;
 
     private Integer isDel;
@@ -51,6 +53,14 @@ public class SysMenu {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag == null ? null : flag.trim();
     }
 
     public Integer getStatus() {

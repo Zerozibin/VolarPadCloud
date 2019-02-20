@@ -13,4 +13,6 @@ public interface SysMenuService {
     List<SysMenu> selectAll();
 
     void addMenu(SysMenu sysMenu);
+
+    SysMenu selectById(Integer id);
 }

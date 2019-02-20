@@ -18,5 +18,6 @@ public class TreeModel {
     private ArrayList<TreeModel> children;//子节点，子节点有0个或多个，所以用链表存放
     private int level_id;//层级       根层级为1
     private int parent_id; //父节点   根节点为0
+    private String flag;
 
 }

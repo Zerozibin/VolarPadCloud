@@ -6,7 +6,6 @@ import com.volarpadcloud.api.entity.TreeModel;
 import com.volarpadcloud.api.entity.enums.DelEnum;
 import com.volarpadcloud.api.entity.enums.StatusEnum;
 import com.volarpadcloud.api.service.SysMenuService;
-import com.volarpadcloud.api.utils.ObjectUnifyParamUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +40,7 @@ public class HomeContoller {
             treeModel.setState("open");
             treeModel.setText(sysMenu.getName());
             treeModel.setLevel_id(sysMenu.getLevel());
+            treeModel.setFlag(sysMenu.getFlag()==null?"":sysMenu.getFlag());
             if(sysMenu.getLevel()==1){
                 list.add(treeModel);
             }else{
