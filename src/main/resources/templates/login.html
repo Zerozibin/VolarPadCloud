@@ -25,7 +25,7 @@
             <div class='icon'>
                 <img alt="" src='/static/img/login/user_icon_copy.png'>
             </div>
-            <input name="login" placeholder='用户名' maxlength="16" type='text' autocomplete="off" value="kbcxy"/>
+            <input name="login" placeholder='用户名' maxlength="16" type='text' autocomplete="off" />
             <div class='validation'>
                 <img alt="" src='/static/img/login/tick.png'>
             </div>
@@ -142,10 +142,6 @@
     var open = 0;
     layui.use('layer', function () {
         var msgalert = '默认账号:' + truelogin + '<br/> 默认密码:' + truepwd;
-        var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: '友情提示', btn: [], anim: 2, shade: 0 });
-        layer.style(index, {
-            color: '#777'
-        });
         //非空验证
         $('input[type="button"]').click(function () {
             var login = $('input[name="login"]').val();
@@ -159,7 +155,8 @@
                 ErroAlert('输入验证码');
             } else {
                 //认证中..
-                fullscreen();
+                //登录完成后变全屏显示
+                // fullscreen();
                 $('.login').addClass('test'); //倾斜特效
                 setTimeout(function () {
                     $('.login').addClass('testtwo'); //平移特效
@@ -225,7 +222,9 @@
                                         $('.success').fadeIn(1000);
                                         $('.success').html(data.Text);
                                         //跳转操作
-
+                                        setTimeout(function () {
+                                            window.location.href='/'
+                                        },1000)
                                     } else {
                                         AjaxErro(data);
                                     }
@@ -240,7 +239,8 @@
             }
         })
     })
-    var fullscreen = function () {
+    //登录完成后变全屏显示
+ /*   var fullscreen = function () {
         elem = document.body;
         if (elem.webkitRequestFullScreen) {
             elem.webkitRequestFullScreen();
@@ -251,7 +251,8 @@
         } else {
             //浏览器不支持全屏API或已被禁用
         }
-    }
+    }*/
+    //todo
     if(ajaxmockjax == 1){
         $.mockjax({
             url: 'Ajax/Login',
