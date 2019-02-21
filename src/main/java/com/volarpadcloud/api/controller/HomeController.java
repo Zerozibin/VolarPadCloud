@@ -22,7 +22,7 @@ import java.util.List;
  * @date 2019/2/15 16:11
  */
 @Controller
-public class HomeContoller {
+public class HomeController {
 
     @Resource
     private SysMenuService sysMenuService;
