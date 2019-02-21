@@ -180,47 +180,63 @@
                 var JsonData = { login: login, pwd: pwd, code: code };
                 //此处做为ajax内部判断
                 var url = "";
-                if(JsonData.login == truelogin && JsonData.pwd == truepwd && JsonData.code.toUpperCase() == CodeVal.toUpperCase()){
-                    url = "Ajax/Login";
-                }else{
-                    url = "Ajax/LoginFalse";
-                }
-
-
-                AjaxPost(url, JsonData,
-                    function () {
-                        //ajax加载中
+                $.ajax({
+                    url:"/checkSysUser",
+                    dataType:"json",
+                    type:"POST",
+                    data:{
+                        username:JsonData.login,
+                        password:JsonData.pwd
                     },
-                    function (data) {
-                        //ajax返回
-                        //认证完成
-                        setTimeout(function () {
-                            $('.authent').show().animate({ right: 90 }, {
-                                easing: 'easeOutQuint',
-                                duration: 600,
-                                queue: false
-                            });
-                            $('.authent').animate({ opacity: 0 }, {
-                                duration: 200,
-                                queue: false
-                            }).addClass('visible');
-                            $('.login').removeClass('testtwo'); //平移特效
-                        }, 2000);
-                        setTimeout(function () {
-                            $('.authent').hide();
-                            $('.login').removeClass('test');
-                            if (data.Status == 'ok') {
-                                //登录成功
-                                $('.login div').fadeOut(100);
-                                $('.success').fadeIn(1000);
-                                $('.success').html(data.Text);
-                                //跳转操作
+                    success:function (result) {
+                        console.log(result)
 
-                            } else {
-                                AjaxErro(data);
-                            }
-                        }, 2400);
-                    })
+                        if(result.code == 200 && JsonData.code.toUpperCase() == CodeVal.toUpperCase()){
+                            url = "Ajax/Login";
+                        }else{
+                            url = "Ajax/LoginFalse";
+                        }
+
+                        AjaxPost(url, JsonData,
+                            function () {
+                                //ajax加载中
+                            },
+                            function (data) {
+                                //ajax返回
+                                //认证完成
+                                setTimeout(function () {
+                                    $('.authent').show().animate({ right: 90 }, {
+                                        easing: 'easeOutQuint',
+                                        duration: 600,
+                                        queue: false
+                                    });
+                                    $('.authent').animate({ opacity: 0 }, {
+                                        duration: 200,
+                                        queue: false
+                                    }).addClass('visible');
+                                    $('.login').removeClass('testtwo'); //平移特效
+                                }, 2000);
+                                setTimeout(function () {
+                                    $('.authent').hide();
+                                    $('.login').removeClass('test');
+                                    if (data.Status == 'ok') {
+                                        //登录成功
+                                        $('.login div').fadeOut(100);
+                                        $('.success').fadeIn(1000);
+                                        $('.success').html(data.Text);
+                                        //跳转操作
+
+                                    } else {
+                                        AjaxErro(data);
+                                    }
+                                }, 2400);
+                            })
+                    },
+                    error:function (result) {
+                        console.log(result)
+                    }
+                })
+
             }
         })
     })
