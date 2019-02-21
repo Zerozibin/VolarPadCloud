@@ -80,11 +80,6 @@
 <script type="text/javascript">
     var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
     var ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
-    //默认账号密码
-
-    var truelogin = "kbcxy";
-    var truepwd = "mcwjs";
-
     var CodeVal = 0;
     Code();
     function Code() {
@@ -139,9 +134,7 @@
             }, 200);
         }
     });
-    var open = 0;
     layui.use('layer', function () {
-        var msgalert = '默认账号:' + truelogin + '<br/> 默认密码:' + truepwd;
         //非空验证
         $('input[type="button"]').click(function () {
             var login = $('input[name="login"]').val();
@@ -186,8 +179,6 @@
                         password:JsonData.pwd
                     },
                     success:function (result) {
-                        console.log(result)
-
                         if(result.code == 200 && JsonData.code.toUpperCase() == CodeVal.toUpperCase()){
                             url = "Ajax/Login";
                         }else{
@@ -252,7 +243,6 @@
             //浏览器不支持全屏API或已被禁用
         }
     }*/
-    //todo
     if(ajaxmockjax == 1){
         $.mockjax({
             url: 'Ajax/Login',
