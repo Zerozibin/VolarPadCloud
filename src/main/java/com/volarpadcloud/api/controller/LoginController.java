@@ -23,6 +23,11 @@ public class LoginController {
     @Resource
     private SysUserService sysUserService;
 
+    @RequestMapping(value = "login")
+    public String login(){
+        return "login";
+    }
+
     @RequestMapping(value = "checkSysUser",method = RequestMethod.POST)
     @ResponseBody
     public BaseResponse checkSysUser(String username,String password){
