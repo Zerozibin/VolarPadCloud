@@ -1,0 +1,10 @@
+#mybatis 配置
+##logging日志配置,生产环境的实际路径
+logging:
+  path: dev-logs
+  level:
+    root: INFO
+  tk:
+    mybatis:
+      pagehelper:
+        mapper: TRACE

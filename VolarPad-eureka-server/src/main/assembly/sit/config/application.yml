@@ -1,0 +1,36 @@
+server:
+  #当前应用服务器的端口
+  port: 8761
+  context-path: "/"
+
+spring:
+  application:
+    #服务别名（注册到Eureka的名称，集群的时候，同一个服务这个名字必须要一致）
+    name: eureka-server
+  cloud:
+    inetutils:
+      preferredNetworks: ['10.']
+      ignored-interfaces: ['eth0','VMware.*']
+      use-only-site-local-interfaces: true
+  profiles:
+    include: eureka,log
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 30000
+  #请求连接的超时时间
+  ConnectTimeout: 5000
+
+#feign客户端连接
+feign:
+  httpclient:
+    connectTimeout: 5000
+    readTimeout: 30000
+  hystrix:
+    #暂不启用Hystrix熔断器（后续看用户访问体量的情况再调整）
+    enabled: false
+  client:
+    config:
+      default:
+        #配置全局连接超时及读超时
+        connectTimeout: 5000
+        readTimeout: 30000
